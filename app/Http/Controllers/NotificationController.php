@@ -17,7 +17,7 @@ class NotificationController extends Controller
     {
         $user = Auth::user();
 
-        $typeNotification = TypeNotification::where('name', 'Низкая важность')->first();
+        $typeNotification = TypeNotification::where('name', 'Низкая важность')->get()->first();
 
         $iconMap = [
             'fas fa-bell' => '🔔',
@@ -60,8 +60,7 @@ class NotificationController extends Controller
                 ->subject('Уведомление о мероприятии');
         });
 
-
-        return back()->with('status', 'Уведомление успешно отправлено на вашу почту!');
+        return back();
 
     }
 }
